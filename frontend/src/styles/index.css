@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Inter", "Noto Sans Bengali", "Noto Sans", system-ui, sans-serif;
+}
+
+:lang(bn) {
+  font-family: "Inter", "Noto Sans Bengali", "Noto Sans", system-ui, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .navbar-button {
+    @apply relative inline-flex h-10 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-semibold leading-none text-slate-700 transition-colors duration-150 cursor-pointer select-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100;
+  }
+
+  .navbar-button:hover {
+    @apply border-sheba-500 text-sheba-700 dark:text-sheba-100;
+  }
+
+  .navbar-button-icon {
+    @apply h-10 w-10 px-0;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-sheba-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950;
+  }
+
+  .theme-smooth {
+    @apply transition-colors duration-150;
+  }
+
+  .btn-pop {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+  }
+
+  .btn-pop:hover {
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.12);
+    transform: translateY(-2px);
+  }
+
+  .btn-pop:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+  .animate-fade-slide-up {
+    animation: fadeSlideUp 0.35s ease forwards;
+  }
+
+  .animate-message-in {
+    animation: fadeSlideUp 0.22s ease forwards;
+  }
+}
+
+@media print {
+  .print-only {
+    display: block !important;
+  }
+
+  .no-print,
+  footer,
+  nav,
+  aside,
+  button {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #111827 !important;
+  }
+
+  header,
+  main > section:not(:has(.print-checklist)) {
+    display: none !important;
+  }
+
+  .container-shell:has(.print-checklist) > section:not(:has(.print-checklist)) {
+    display: none !important;
+  }
+
+  main,
+  section,
+  article,
+  div {
+    box-shadow: none !important;
+  }
+
+  .container-shell {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .print-checklist {
+    break-inside: avoid;
+    display: grid !important;
+    gap: 12px !important;
+    padding: 24px !important;
+  }
+
+  .print-checklist h1 {
+    margin: 0 0 8px !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+  }
+
+  .print-checklist label {
+    border: 1px solid #d1d5db !important;
+    color: #111827 !important;
+    padding: 10px !important;
+  }
+
+  .print-checklist input {
+    appearance: auto !important;
+  }
+}
